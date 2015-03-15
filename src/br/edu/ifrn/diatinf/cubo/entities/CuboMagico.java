@@ -1,6 +1,6 @@
 package br.edu.ifrn.diatinf.cubo.entities;
 
-public class CuboMagico {
+public class CuboMagico implements CommandInterface {
 
 	public Face[] faces;
 	public Face facePrincipal;
@@ -32,6 +32,16 @@ public class CuboMagico {
 			facePrincipal=facePrincipal.getFaceCima();
 		}
 		
+		
+	}
+
+	@Override
+	public void execute() {
+		this.rotacionar(Direcoes direcao);
+	}
+
+	@Override
+	public void undo() {
 		
 	}
 	
