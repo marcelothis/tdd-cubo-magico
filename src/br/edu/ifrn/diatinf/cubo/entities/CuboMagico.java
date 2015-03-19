@@ -1,6 +1,11 @@
 package br.edu.ifrn.diatinf.cubo.entities;
 
-public class CuboMagico {
+import br.edu.ifrn.diatinf.cubo.entities.state.RotacionarCima;
+import br.edu.ifrn.diatinf.cubo.entities.state.RotacionarBaixo;
+import br.edu.ifrn.diatinf.cubo.entities.state.RotacionarDireita;
+import br.edu.ifrn.diatinf.cubo.entities.state.RotacionarEsquerda;
+
+public class CuboMagico{
 
 	public Face[] faces;
 	public Face facePrincipal;
@@ -20,16 +25,20 @@ public class CuboMagico {
 	public void rotacionar(Direcoes direcao) {
 		
 		if (direcao==Direcoes.Esquerda){
-			facePrincipal=facePrincipal.getFaceDireita();
+			RotacionarEsquerda rtEsquerda = new RotacionarEsquerda();
+			rtEsquerda.rotacionarEsquerda(direcao, facePrincipal);
 		}
 		else if(direcao==Direcoes.Direita){
-			facePrincipal=facePrincipal.getFaceEsquerda();
+			RotacionarDireita rtDireita = new RotacionarDireita();
+			rtDireita.rotacionarDireita(direcao, facePrincipal);
 		}
 		else if(direcao==Direcoes.Cima){
-			facePrincipal=facePrincipal.getFaceBaixo();
+			RotacionarCima rtCima = new RotacionarCima();
+			rtCima.rotacionarCima(direcao, facePrincipal);
 		}
 		else if(direcao==Direcoes.Baixo){
-			facePrincipal=facePrincipal.getFaceCima();
+			RotacionarBaixo rtBaixo = new RotacionarBaixo();
+			rtBaixo.rotacionarBaixo(direcao, facePrincipal);
 		}
 		
 		
